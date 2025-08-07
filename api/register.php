@@ -133,7 +133,7 @@ try {
 function sendWelcomeEmail($client) {
     try {
         $to = $client['email'];
-        $subject = "Welcome to OpportunityTracker - Registration Successful!";
+        $subject = "Welcome to Khuluma App - Registration Successful!";
         
         // Create HTML email content
         $htmlMessage = createWelcomeEmailHTML($client);
@@ -145,7 +145,7 @@ function sendWelcomeEmail($client) {
         $headers = [
             'MIME-Version: 1.0',
             'Content-Type: text/html; charset=UTF-8',
-            'From: OpportunityTracker <communications@khulumaeswatini.com>',
+            'From: Khuluma App <communications@khulumaeswatini.com>',
             'Reply-To: support@khulumaeswatini.com',
             'X-Mailer: PHP/' . phpversion(),
             'X-Priority: 3',
@@ -181,7 +181,7 @@ function createWelcomeEmailHTML($client) {
     <head>
         <meta charset='UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-        <title>Welcome to OpportunityTracker</title>
+        <title>Welcome to Khuluma App</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -203,7 +203,7 @@ function createWelcomeEmailHTML($client) {
                 margin-bottom: 30px;
             }
             .logo {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #ff0a0aff 0%, #0d0c0eff 100%);
                 color: white;
                 padding: 20px;
                 border-radius: 50%;
@@ -230,7 +230,7 @@ function createWelcomeEmailHTML($client) {
                 border-left: 4px solid #667eea;
             }
             .button {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #ff0000ff 0%, #0d0d0eff 100%);
                 color: white;
                 padding: 15px 30px;
                 text-decoration: none;
@@ -262,7 +262,7 @@ function createWelcomeEmailHTML($client) {
             .feature-icon {
                 font-size: 24px;
                 margin-bottom: 10px;
-                color: #667eea;
+                color: #ec0000ff;
             }
         </style>
     </head>
@@ -270,14 +270,14 @@ function createWelcomeEmailHTML($client) {
         <div class='container'>
             <div class='header'>
                 <div class='logo'>🎯</div>
-                <h1 class='welcome-title'>Welcome to OpportunityTracker!</h1>
+                <h1 class='welcome-title'>Welcome to Khuluma App!</h1>
                 <p>Your journey to finding the perfect opportunity starts here</p>
             </div>
             
             <div class='content'>
                 <p>Dear <strong>$name $surname</strong>,</p>
                 
-                <p>Welcome to OpportunityTracker! We're thrilled to have you join our community of ambitious individuals seeking their next big opportunity.</p>
+                <p>Welcome to Khuluma App! We're thrilled to have you join our community of ambitious individuals seeking their next big opportunity.</p>
                 
                 <div class='highlight'>
                     <strong>Your Account Details:</strong><br>
@@ -286,7 +286,7 @@ function createWelcomeEmailHTML($client) {
                     ✅ Status: Active
                 </div>
                 
-                <h3>What you can do with OpportunityTracker:</h3>
+                <h3>What you can do with Khuluma App:</h3>
                 
                 <div class='features'>
                     <div class='feature'>
@@ -328,12 +328,12 @@ function createWelcomeEmailHTML($client) {
                 <p>Best of luck with your opportunity search!</p>
                 
                 <p>Warm regards,<br>
-                <strong>The OpportunityTracker Team</strong></p>
+                <strong>The Khuluma Eswatini Team</strong></p>
             </div>
             
             <div class='footer'>
-                <p>This email was sent to $email because you registered for OpportunityTracker.</p>
-                <p>© 2025 OpportunityTracker. All rights reserved.</p>
+                <p>This email was sent to $email because you registered for Khuluma Eswatini.</p>
+                <p>© 2025 Khuluma Eswatini. All rights reserved.</p>
                 <p>If you have any questions, contact us at support@khulumaeswatini.com</p>
             </div>
         </div>
@@ -349,18 +349,18 @@ function createWelcomeEmailText($client) {
     $registrationDate = date('F j, Y', strtotime($client['created_at']));
     
     return "
-Welcome to OpportunityTracker!
+Welcome to Khuluma App!
 
 Dear $name $surname,
 
-Welcome to OpportunityTracker! We're thrilled to have you join our community of ambitious individuals seeking their next big opportunity.
+Welcome to Khuluma App! We're thrilled to have you join our community of ambitious individuals seeking their next big opportunity.
 
 Your Account Details:
 - Email: $email
 - Registration Date: $registrationDate
 - Status: Active
 
-What you can do with OpportunityTracker:
+What you can do with Khuluma App:
 • Discover Opportunities - Browse and search through hundreds of opportunities
 • Apply Instantly - Submit applications with just a few clicks
 • Track Applications - Monitor your application status in real-time
@@ -372,18 +372,18 @@ Next Steps:
 3. Browse opportunities - Find the perfect match for your skills
 4. Apply confidently - Submit your applications with ease
 
-Visit OpportunityTracker: https://khulumaeswatini.com/client
+Visit Khuluma App: https://khulumaeswatini.com/client
 
 If you have any questions or need assistance, our support team is here to help. Simply reply to this email or contact us at support@khulumaeswatini.com.
 
 Best of luck with your opportunity search!
 
 Warm regards,
-The OpportunityTracker Team
+The Khuluma App Team
 
 ---
-This email was sent to $email because you registered for OpportunityTracker.
-© 2025 OpportunityTracker. All rights reserved.
+This email was sent to $email because you registered for Khuluma App.
+© 2025 Khuluma App. All rights reserved.
 If you have any questions, contact us at support@khulumaeswatini.com
     ";
 }

@@ -1,9 +1,10 @@
 # Ignore everything by default
 *
 
-# Only include these two folders
+# Only include these two folders and their contents
 !/api/
 !/api/**
+!/build/
 !/build/web/
 !/build/web/**
 

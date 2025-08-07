@@ -312,7 +312,7 @@ function createWelcomeEmailHTML($client) {
                 </div>
                 
                 <div style='text-align: center;'>
-                    <a href='https://khulumaeswatini.com/client' class='button'>Start Exploring Opportunities</a>
+                    <a href='https://khulumaeswatini.com/client' class='button' style='color: white;'>Start Exploring Opportunities</a>
                 </div>
                 
                 <h3>Next Steps:</h3>

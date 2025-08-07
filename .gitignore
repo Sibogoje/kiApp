@@ -1,0 +1,11 @@
+# Ignore everything by default
+*
+
+# Only include these two folders
+!/api/
+!/api/**
+!/build/web/
+!/build/web/**
+
+# Also include .gitignore itself
+!.gitignore

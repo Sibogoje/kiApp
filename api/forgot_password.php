@@ -111,7 +111,7 @@ function createPasswordResetEmailHTML($client, $resetToken) {
     $name = htmlspecialchars($client['name']);
     $surname = htmlspecialchars($client['surname']);
     $email = htmlspecialchars($client['email']);
-    $resetLink = "https://khulumaeswatini.com/client/reset-password?token=" . $resetToken;
+    $resetLink = "https://khulumaeswatini.com/client/reset-password.php?token=" . $resetToken;
     
     return "
     <!DOCTYPE html>

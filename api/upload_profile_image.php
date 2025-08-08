@@ -16,7 +16,8 @@ if (!isset($_FILES['profile_image'])) {
     exit;
 }
 
-$target_dir = "uploads/profile_images/";
+// Use uploads/profile/ as the folder
+$target_dir = __DIR__ . '/../uploads/profile/';
 if (!is_dir($target_dir)) {
     mkdir($target_dir, 0777, true);
 }
@@ -33,13 +34,11 @@ $new_filename = "client_{$client_id}_" . time() . ".{$ext}";
 $target_file = $target_dir . $new_filename;
 
 if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file)) {
-    // Update DB
-    $image_url = "/api/uploads/profile_images/{$new_filename}";
-    error_log("Updating clients SET profile_image = $image_url WHERE id = $client_id");
+    // Save accessible URL (adjust domain/path as needed)
+    $image_url = "/uploads/profile/{$new_filename}";
     $stmt = $pdo->prepare("UPDATE clients SET profile_image = ? WHERE id = ?");
-    $result = $stmt->execute([$image_url, $client_id]);
-    error_log("SQL executed: " . ($result ? "success" : "fail"));
-    echo json_encode(['success' => true, 'image_url' => $image_url, 'sql_result' => $result]);
+    $stmt->execute([$image_url, $client_id]);
+    echo json_encode(['success' => true, 'image_url' => $image_url]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Failed to upload image']);
 }

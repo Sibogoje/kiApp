@@ -35,9 +35,11 @@ $target_file = $target_dir . $new_filename;
 if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file)) {
     // Update DB
     $image_url = "/api/uploads/profile_images/{$new_filename}";
+    error_log("Updating clients SET profile_image = $image_url WHERE id = $client_id");
     $stmt = $pdo->prepare("UPDATE clients SET profile_image = ? WHERE id = ?");
-    $stmt->execute([$image_url, $client_id]);
-    echo json_encode(['success' => true, 'image_url' => $image_url]);
+    $result = $stmt->execute([$image_url, $client_id]);
+    error_log("SQL executed: " . ($result ? "success" : "fail"));
+    echo json_encode(['success' => true, 'image_url' => $image_url, 'sql_result' => $result]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Failed to upload image']);
 }

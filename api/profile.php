@@ -66,25 +66,21 @@ function getProfile($pdo, $clientId) {
                 $profile['profile_image'] = getFullImageUrl($profile['profile_image']);
             }
 
-        
-        error_log("Profile found: " . ($profile ? 'yes' : 'no'));
-        if ($profile) {
+            error_log("Profile found: yes");
             error_log("Profile data: " . json_encode($profile));
-        }
-        
-        if ($profile) {
+
             sendResponse(true, 'Profile retrieved successfully', $profile);
         } else {
+            error_log("Profile found: no");
             sendResponse(false, 'Profile not found');
         }
-        
+
     } catch (Exception $e) {
         error_log("Error getting profile: " . $e->getMessage());
         sendResponse(false, 'Database error occurred');
     }
 }
 
-}
 
 function updateProfile($pdo, $clientId, $data) {
     try {

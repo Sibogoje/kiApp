@@ -42,6 +42,11 @@ switch ($method) {
         sendResponse(false, 'Method not allowed');
 }
 
+function getFullImageUrl($relativePath) {
+    $baseUrl = 'https://khulumaeswatini.com/client/'; // Replace with your actual domain
+    return $baseUrl . $relativePath;
+}
+
 function getProfile($pdo, $clientId) {
     try {
         error_log("Getting profile for client_id: " . $clientId);
@@ -54,6 +59,13 @@ function getProfile($pdo, $clientId) {
         $stmt->execute([$clientId]);
         
         $profile = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($profile) {
+            // Convert relative image path to full URL if it exists
+            if (!empty($profile['profile_image'])) {
+                $profile['profile_image'] = getFullImageUrl($profile['profile_image']);
+            }
+
         
         error_log("Profile found: " . ($profile ? 'yes' : 'no'));
         if ($profile) {
@@ -70,6 +82,8 @@ function getProfile($pdo, $clientId) {
         error_log("Error getting profile: " . $e->getMessage());
         sendResponse(false, 'Database error occurred');
     }
+}
+
 }
 
 function updateProfile($pdo, $clientId, $data) {

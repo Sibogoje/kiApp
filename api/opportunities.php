@@ -73,7 +73,7 @@ function getOpportunities($pdo) {
         
         // Pagination
         $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-        $limit = isset($_GET['limit']) ? max(1, min(50, intval($_GET['limit']))) : 10;
+        $limit = isset($_GET['limit']) ? max(1, min(50, intval($_GET['limit']))) : 1000;
         $offset = ($page - 1) * $limit;
         
         // Get total count
